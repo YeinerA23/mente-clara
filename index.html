@@ -1,0 +1,266 @@
+/* ============================================================
+   Mente Clara · Estilos
+   Paleta: Tinta #2E2440 · Papel #F3F0F7 · Lila #8E7CC3
+           Salvia #6FA287 · Rojo #C25E5E · Ámbar #4E7CB8
+   Tipografía: Fraunces (títulos) + Karla (texto)
+   ============================================================ */
+
+:root {
+  --tinta: #2E2440;
+  --tinta-suave: #4A3D63;
+  --papel: #F3F0F7;
+  --lila: #8E7CC3;
+  --lila-claro: #E4DDF2;
+  --salvia: #6FA287;
+  --rojo: #C25E5E;
+  --azul: #4E7CB8;
+  --blanco: #FFFFFF;
+  --sombra: 0 20px 50px rgba(46, 36, 64, 0.18);
+  --radio: 18px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Karla", system-ui, sans-serif;
+  color: var(--tinta);
+  background: var(--papel);
+  min-height: 100vh;
+}
+
+h1, h2, h3, .marca {
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.75;
+  margin-bottom: 0.4rem;
+}
+
+/* ---------- Fondo de páginas de autenticación ---------- */
+.pagina-auth {
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at 15% 20%, var(--lila-claro) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, #DCE9E1 0%, transparent 45%),
+    var(--papel);
+}
+
+/* ---------- Tarjeta dividida ---------- */
+.tarjeta-auth {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width: min(860px, 100%);
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+.panel-marca {
+  background: linear-gradient(160deg, var(--tinta) 0%, var(--tinta-suave) 100%);
+  color: var(--papel);
+  padding: 2.8rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mancha {
+  width: 110px;
+  color: var(--lila);
+  margin-bottom: 1rem;
+  animation: respirar 5s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mancha { animation: none; }
+}
+
+.marca { font-size: 2rem; font-weight: 700; }
+
+.lema { opacity: 0.85; line-height: 1.5; font-size: 0.95rem; margin-top: 0.4rem; }
+
+/* ---------- Formulario ---------- */
+.panel-formulario { padding: 2.8rem 2.4rem; }
+
+.panel-formulario h2 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+
+.subtitulo { color: var(--tinta-suave); opacity: 0.8; margin-bottom: 1.6rem; font-size: 0.95rem; }
+
+.formulario { display: flex; flex-direction: column; gap: 0.45rem; }
+
+.formulario label {
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-top: 0.6rem;
+}
+
+.formulario input {
+  font: inherit;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--lila-claro);
+  border-radius: 10px;
+  background: var(--papel);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formulario input:focus {
+  outline: none;
+  border-color: var(--lila);
+  box-shadow: 0 0 0 3px rgba(142, 124, 195, 0.25);
+}
+
+.boton-principal {
+  margin-top: 1.2rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--blanco);
+  background: var(--tinta);
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.boton-principal:hover { background: var(--lila); transform: translateY(-1px); }
+.boton-principal:focus-visible { outline: 3px solid var(--lila); outline-offset: 2px; }
+
+.pie-formulario { margin-top: 1.4rem; font-size: 0.9rem; text-align: center; }
+.pie-formulario a { color: var(--lila); font-weight: 700; text-decoration: none; }
+.pie-formulario a:hover { text-decoration: underline; }
+
+/* ---------- Alertas (toasts) ---------- */
+#zona-alertas {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 1000;
+}
+
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--blanco);
+  color: var(--tinta);
+  padding: 0.8rem 1.1rem;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  border-left: 5px solid var(--azul);
+  font-weight: 500;
+  max-width: 320px;
+  animation: entrar 0.35s ease;
+}
+
+.alerta-icono {
+  display: grid;
+  place-items: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  color: var(--blanco);
+  font-size: 0.75rem;
+  background: var(--azul);
+  flex-shrink: 0;
+}
+
+.alerta-exito { border-left-color: var(--salvia); }
+.alerta-exito .alerta-icono { background: var(--salvia); }
+.alerta-error { border-left-color: var(--rojo); }
+.alerta-error .alerta-icono { background: var(--rojo); }
+
+.alerta-salir { opacity: 0; transform: translateX(20px); transition: all 0.4s; }
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------- Home ---------- */
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  background: var(--blanco);
+  box-shadow: 0 2px 12px rgba(46, 36, 64, 0.08);
+}
+
+.barra-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.boton-salir {
+  font: inherit;
+  font-weight: 700;
+  color: var(--rojo);
+  background: transparent;
+  border: 1.5px solid var(--rojo);
+  border-radius: 10px;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.boton-salir:hover { background: var(--rojo); color: var(--blanco); }
+
+.contenido-home {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.contenido-home h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
+.contenido-home .lema { color: var(--tinta-suave); }
+
+.rejilla-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2.2rem;
+}
+
+.tarjeta {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(46, 36, 64, 0.08);
+  border-top: 4px solid var(--lila);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+.tarjeta h3 { margin-bottom: 0.5rem; font-size: 1.05rem; }
+.tarjeta p { font-size: 0.9rem; color: var(--tinta-suave); line-height: 1.5; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 680px) {
+  .tarjeta-auth { grid-template-columns: 1fr; }
+  .panel-marca { padding: 2rem; }
+  .mancha { width: 80px; }
+  .barra { padding: 0.9rem 1.2rem; }
+}
+
+/* ---------- Ajustes versión Flask ---------- */
+a.boton-salir { text-decoration: none; display: inline-block; }
