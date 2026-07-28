@@ -1,7 +1,0 @@
-// Oculta automáticamente las alertas flash después de unos segundos
-document.querySelectorAll(".alerta").forEach((alerta) => {
-  setTimeout(() => {
-    alerta.classList.add("alerta-salir");
-    setTimeout(() => alerta.remove(), 400);
-  }, 3500);
-});
